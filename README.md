@@ -1,2 +1,2 @@
-# dotfiles
 # nvim-config
+
