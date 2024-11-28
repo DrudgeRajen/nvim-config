@@ -4,7 +4,6 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>")
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- replace selected text without clipboard or any register
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -27,6 +26,9 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Toggle Tagbar
 vim.keymap.set("n", "<C-K><C-T>", ":TagbarToggle<CR>", { silent = true })
 
+-- lazy
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
 -- disable backspace
 vim.api.nvim_set_keymap('n', '<Backspace>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<Backspace>', '<Nop>', { noremap = true, silent = true })
@@ -40,4 +42,3 @@ vim.api.nvim_set_keymap('i', '<Up>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<Down>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<Left>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<Right>', '<Nop>', { noremap = true, silent = true })
-
