@@ -3,7 +3,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>")
 
 -- replace selected text without clipboard or any register
 vim.keymap.set("x", "<leader>p", [["_dP]])

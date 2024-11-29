@@ -6,7 +6,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls' },
+			ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls', 'yamlls', 'dockerls' },
 			handlers = {
 				function(server_name)
 					require('lspconfig')[server_name].setup({})
@@ -20,6 +20,22 @@ return {
 						},
 					})
 				end,
+
+				yamlls = function()
+					require('lspconfig').yamlls.setup({
+						settings = {
+							yaml = {
+								schemas = {
+									["https://raw.githubusercontent.com/quantumblacklabs/kedro/develop/static/jsonschema/kedro-catalog-0.17.json"] =
+									"conf/**/*catalog*",
+									["https://json.schemastore.org/github-workflow.json"] =
+									"/.github/workflows/*"
+								}
+							}
+						}
+					})
+				end,
+
 				gopls = function()
 					require('lspconfig').gopls.setup({
 						settings = {
