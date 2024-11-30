@@ -28,6 +28,12 @@ vim.keymap.set("n", "<C-K><C-T>", ":TagbarToggle<CR>", { silent = true })
 -- lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
+-- Window management
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Re-align split screens" })
+vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close selected split" })
+
 -- disable backspace
 vim.api.nvim_set_keymap('n', '<Backspace>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<Backspace>', '<Nop>', { noremap = true, silent = true })
