@@ -26,7 +26,7 @@ return {
 						settings = {
 							yaml = {
 								schemas = {
-									kubernetes = { "*.k8s.yaml", "k8s-*.yaml", "kube-*.yaml", "deployment.yaml", "service.yaml", "secret.yaml", "ingress.yaml", },
+									kubernetes = { "*.k8s.yaml", "k8s-*.yaml", "kube-*.yaml", "deployment.yaml", "service.yaml", "secret.yaml", "ingress.yaml", "cronjob.yaml" },
 									["https://raw.githubusercontent.com/quantumblacklabs/kedro/develop/static/jsonschema/kedro-catalog-0.17.json"] =
 									"conf/**/*catalog*",
 									["http://json.schemastore.org/github-workflow"] =
