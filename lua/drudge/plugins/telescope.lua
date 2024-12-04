@@ -2,7 +2,12 @@ return {
 	'nvim-telescope/telescope.nvim',
 	tag = '0.1.8',
 	-- or                              , branch = '0.1.x',
-	dependencies = { 'nvim-lua/plenary.nvim' },
+	dependencies = { 'nvim-lua/plenary.nvim', {
+		'nvim-telescope/telescope-fzf-native.nvim',
+		build = 'make', -- Ensure you build the native extension
+	},
+	},
+
 
 	config = function()
 		require('telescope').setup({
@@ -23,6 +28,13 @@ return {
 					"--glob=!**/.vscode/*",
 					"--glob=!**/Cargo.lock",
 				},
+				-- General Telescope configuration
+				prompt_prefix = '🔍 ',
+				selection_caret = '❯ ',
+				sorting_strategy = 'ascending',
+				layout_config = {
+					prompt_position = 'top',
+				},
 			},
 			pickers = {
 				find_files = {
@@ -40,7 +52,18 @@ return {
 					},
 				},
 			},
+			extensions = {
+				fzf = {
+					fuzzy = true, -- Enable fuzzy matching
+					override_generic_sorter = true, -- Use fzf for general sorters
+					override_file_sorter = true, -- Use fzf for file sorting
+					case_mode = 'smart_case', -- Smart case for matching
+				},
+			},
 		})
+
+		-- Load the fzf extension
+		require('telescope').load_extension('fzf')
 
 		local builtin = require('telescope.builtin')
 		vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Telescope find files' })
