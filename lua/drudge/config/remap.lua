@@ -33,17 +33,3 @@ vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }
 vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Re-align split screens" })
 vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close selected split" })
-
--- disable backspace
-vim.api.nvim_set_keymap('n', '<Backspace>', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Backspace>', '<Nop>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<Up>', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Down>', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Left>', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Right>', '<Nop>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('i', '<Up>', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Down>', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Left>', '<Nop>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Right>', '<Nop>', { noremap = true, silent = true })
