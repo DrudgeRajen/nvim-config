@@ -10,62 +10,71 @@ return {
 
 
 	config = function()
-		require('telescope').setup({
-			defaults = {
-				vimgrep_arguments = {
-					"rg",
-					"--follow", -- Follow symbolic links
-					"--hidden", -- Search for hidden files
-					"--no-heading", -- Don't group matches by each file
-					"--with-filename", -- Print the file path with the matched lines
-					"--line-number", -- Show line numbers
-					"--column", -- Show column numbers
-					"--smart-case", -- Smart case search
+		local actions = require("telescope.actions")
+		require("telescope")
+		    .setup({
+			    defaults = {
+				    mappings = {
 
-					-- Exclude some patterns from search
-					"--glob=!**/.git/*",
-					"--glob=!**/.idea/*",
-					"--glob=!**/.vscode/*",
-					"--glob=!**/Cargo.lock",
-				},
-				-- General Telescope configuration
-				prompt_prefix = '🔍 ',
-				selection_caret = '❯ ',
-				sorting_strategy = 'ascending',
-				layout_config = {
-					prompt_position = 'top',
-				},
-			},
-			pickers = {
-				find_files = {
-					hidden = true,
-					-- needed to exclude some files & dirs from general search
-					-- when not included or specified in .gitignore
-					find_command = {
-						"rg",
-						"--files",
-						"--hidden",
-						"--glob=!**/.git/*",
-						"--glob=!**/.idea/*",
-						"--glob=!**/.vscode/*",
-						"--glob=!**/Cargo.lock",
-					},
-				},
-			},
-			extensions = {
-				fzf = {
-					fuzzy = true, -- Enable fuzzy matching
-					override_generic_sorter = true, -- Use fzf for general sorters
-					override_file_sorter = true, -- Use fzf for file sorting
-					case_mode = 'smart_case', -- Smart case for matching
-				},
-			},
-		})
+					    i = {
+						    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
+					    }
+				    },
+				    vimgrep_arguments = {
+					    "rg",
+					    "--follow", -- Follow symbolic links
+					    "--hidden", -- Search for hidden files
+					    "--no-heading", -- Don't group matches by each file
+					    "--with-filename", -- Print the file path with the matched lines
+					    "--line-number", -- Show line numbers
+					    "--column", -- Show column numbers
+					    "--smart-case", -- Smart case search
+
+					    -- Exclude some patterns from search
+					    "--glob=!**/.git/*",
+					    "--glob=!**/.idea/*",
+					    "--glob=!**/.vscode/*",
+					    "--glob=!**/Cargo.lock",
+				    },
+				    -- General Telescope configuration
+				    prompt_prefix = '🔍 ',
+				    selection_caret = '❯ ',
+				    sorting_strategy = 'ascending',
+				    layout_config = {
+					    prompt_position = 'top',
+				    },
+			    },
+			    pickers = {
+				    find_files = {
+					    hidden = true,
+					    -- needed to exclude some files & dirs from general search
+					    -- when not included or specified in .gitignore
+					    find_command = {
+						    "rg",
+						    "--files",
+						    "--hidden",
+						    "--glob=!**/.git/*",
+						    "--glob=!**/.idea/*",
+						    "--glob=!**/.vscode/*",
+						    "--glob=!**/Cargo.lock",
+					    },
+				    },
+			    },
+			    extensions = {
+				    fzf = {
+					    fuzzy = true, -- Enable fuzzy matching
+					    override_generic_sorter = true, -- Use fzf for general sorters
+					    override_file_sorter = true, -- Use fzf for file sorting
+					    case_mode = 'smart_case', -- Smart case for matching
+				    },
+			    },
+		    })
 
 		-- Load the fzf extension
 		require('telescope').load_extension('fzf')
 
 		local builtin = require('telescope.builtin')
+		local actions = require('telescope.actions')
 		vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Telescope find files' })
 		vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Telescope find git files' })
 		vim.keymap.set('n', '<leader>ps', function()

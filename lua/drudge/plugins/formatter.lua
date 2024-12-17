@@ -22,6 +22,7 @@ return {
 			lua = { "stylua" },
 			rust = { "rustfmt", lsp_format = "fallback" },
 			yaml = { "yamlfmt", lsp_format = "fallback" },
+			go = { "gofmt", lsp_format = "fallback" },
 		},
 		-- Set default options
 		default_format_opts = {

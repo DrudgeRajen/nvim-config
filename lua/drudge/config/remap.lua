@@ -33,3 +33,8 @@ vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }
 vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Re-align split screens" })
 vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close selected split" })
+
+-- clear quickfix list
+vim.keymap.set('n', '<leader>cq', function()
+	vim.fn.setqflist({})
+end, { desc = "Clear quickfix list" })
