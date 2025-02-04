@@ -6,7 +6,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls', 'yamlls', 'dockerls' },
+			ensure_installed = { 'lua_ls', 'rust_analyzer', 'gopls', 'yamlls', 'dockerls', 'python_lsp_server' },
 			handlers = {
 				function(server_name)
 					require('lspconfig')[server_name].setup({})
