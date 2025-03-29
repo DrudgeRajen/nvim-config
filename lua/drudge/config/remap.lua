@@ -36,10 +36,10 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close selected spl
 
 -- clear quickfix list
 vim.keymap.set('n', '<leader>cq', function()
-	vim.fn.setqflist({})
+  vim.fn.setqflist({})
 end, { desc = "Clear quickfix list" })
 
 -- error window
 vim.keymap.set("n", "<leader>e", function()
-	vim.diagnostic.open_float()
+  vim.diagnostic.open_float()
 end, { desc = "Show error on float" })

@@ -1,9 +1,11 @@
 return {
-	"m4xshen/hardtime.nvim",
-	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	config = function()
-		require("hardtime").setup({
-			disabled_filetypes = { "NvimTree", "lazy", "mason" }
-		})
-	end
+  "m4xshen/hardtime.nvim",
+  dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+  config = function()
+    require("hardtime").setup({
+      disabled_filetypes = { "NvimTree", "lazy", "mason" },
+      disable_mouse = false,
+      max_time = 5000,
+    })
+  end
 }
