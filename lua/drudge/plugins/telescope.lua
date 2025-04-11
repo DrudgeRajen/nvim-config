@@ -2,7 +2,7 @@ return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',
   -- or                              , branch = '0.1.x',
-  dependencies = { 'nvim-lua/plenary.nvim', {
+  dependencies = { 'nvim-lua/plenary.nvim', "nvim-telescope/telescope-frecency.nvim", {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make', -- Ensure you build the native extension
   },
@@ -73,6 +73,8 @@ return {
     -- Load the fzf extension
     require('telescope').load_extension('fzf')
 
+    require("telescope").load_extension("frecency")
+
     local builtin = require('telescope.builtin')
     local actions = require('telescope.actions')
     vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Telescope find files' })
@@ -81,5 +83,10 @@ return {
       builtin.grep_string({ search = vim.fn.input("Grep > ") });
     end)
     vim.keymap.set('n', '<leader>uC', builtin.colorscheme, { desc = "List available colorscheme" })
+
+
+    vim.keymap.set('n', '<leader>fr', function()
+      require('telescope').extensions.frecency.frecency({ workspace = 'CWD', theme = "ivy" })
+    end, { desc = 'Telescope Frecency (CWD)' })
   end
 }
