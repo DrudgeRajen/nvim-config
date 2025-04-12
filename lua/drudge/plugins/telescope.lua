@@ -17,8 +17,8 @@ return {
             mappings = {
 
               i = {
-                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
-              }
+                ["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist
+              },
             },
             vimgrep_arguments = {
               "rg",
@@ -46,6 +46,7 @@ return {
           },
           pickers = {
             find_files = {
+              theme = "dropdown",
               hidden = true,
               -- needed to exclude some files & dirs from general search
               -- when not included or specified in .gitignore
@@ -76,8 +77,10 @@ return {
     require("telescope").load_extension("frecency")
 
     local builtin = require('telescope.builtin')
-    local actions = require('telescope.actions')
-    vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Telescope find files' })
+
+    vim.keymap.set('n', '<leader>pf', function()
+      builtin.find_files({ previewer = false })
+    end, { desc = 'Telescope find files' })
     vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Telescope find git files' })
     vim.keymap.set('n', '<leader>ps', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") });
@@ -87,6 +90,7 @@ return {
 
     vim.keymap.set('n', '<leader>fr', function()
       require('telescope').extensions.frecency.frecency({ workspace = 'CWD', theme = "ivy" })
+      builtin.find_files({ previewer = false })
     end, { desc = 'Telescope Frecency (CWD)' })
   end
 }
